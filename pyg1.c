@@ -10,7 +10,7 @@ char * pyg_translator(const char * input);
 char * pyg_translator(const char * input)
 {
 	char * working_input = malloc(strlen(input) + 1);
-	char * output = malloc(strlen(input) + 1);
+	char * output = malloc(strlen(input) + 3);
 	char first_ch[2] = { 0 };
 
 	/* Make a working copy of input */
@@ -34,6 +34,9 @@ char * pyg_translator(const char * input)
 	/* append the pyg latin ending */
 	strcat(output, "ay");
 
+	/* release memory*/
+	free(working_input);
+
 	return output;
 }
 
@@ -50,6 +53,9 @@ int main(void) {
 
 	/* print out the translation */
 	printf("Translated = %s\n", translated);
+
+	/* release memory*/
+	free(translated);
 
 	/*printf("Hello World\n");*/
 	return 0;
